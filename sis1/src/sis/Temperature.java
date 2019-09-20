@@ -1,4 +1,6 @@
-package sis1;
+package sis;
+
+import sis.Temperature;
 
 public class Temperature {
 	
@@ -16,15 +18,17 @@ public class Temperature {
 		this.value = value;
 	}
 	
-	public Temperature(char scale)
+	private Temperature(char scale)
 	{
-		this.scale = scale;
+		if(scale == 'C' || scale == 'F')
+			this.scale = scale;
 	}
 	
 	public Temperature(double value, char scale)
 	{
 		this.value = value;
-		this.scale = scale;
+		if(scale == 'C' || scale == 'F')
+			this.scale = scale;
 	}
 	
 	public double getInCelsius()
@@ -58,13 +62,19 @@ public class Temperature {
 	
 	public void setScale(char scale)
 	{
-		this.scale = scale;
+		if(scale == 'C' || scale == 'F')
+			this.scale = scale;
+		else
+			scale = 'C';
 	}
 	
 	public void setBoth(double value, char scale)
 	{
 		this.value = value;
-		this.scale = scale;
+		if(scale == 'C' || scale == 'F')
+			this.scale = scale;
+		else
+			scale = 'C';
 	}
 	
 	public char getScale()
@@ -74,7 +84,7 @@ public class Temperature {
 	
 	public static void main(String[] args) {
 		
-		Temperature temperature = new Temperature(25);
+		Temperature temperature = new Temperature();
 		
 		System.out.println(temperature.getInCelsius());
 		System.out.println(temperature.getInFahrenheit());

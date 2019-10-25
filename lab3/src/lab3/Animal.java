@@ -1,44 +1,48 @@
 package lab3;
 
-public class Animal{
+public abstract class Animal{
 	
+	protected String type;
 	private String voice;
 	private String food;
-	private int dayOfBirth;
+	private String area;
 	
-	public Animal()
-	{
-	}
+	public Animal() {};
 	
-	public Animal(String voice)
+	public Animal(String type) 
 	{
-		this.voice = voice;
+		this.type = type;
 	}
 	
 	public Animal(String voice, String food)
 	{
-		this(voice);
+		this.voice = voice;
 		this.food = food;
 	}
-	
-	public Animal(String voice, String food, int dayOfBirth)
+	public Animal(String voice, String food, String area)
 	{
 		this(voice, food);
-		this.dayOfBirth = dayOfBirth;
+		this.area = area;
 	}
 	
-	public String getVoice()
+	public String getVoice(){return voice;}
+	
+	public String getArea() {return area;}
+	
+	public String getFood() {return food;}
+	
+	public void setArea(String area)
 	{
-		return voice;
+		this.area = area;
 	}
-	
-	public void move()
-	{	
-		System.out.println("Animal is moving");
-	}
-	
-	public void run()
+			
+	public void goSleep()
 	{
-		System.out.println("Animal is running");
+		System.out.println("Fall asleep.");
+	}
+	
+	public void eatFood()
+	{
+		System.out.println(type + " is eating.");
 	}
 }

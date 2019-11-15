@@ -1,7 +1,5 @@
 package task3;
 
-import java.util.Collection;
-
 public interface MyCollection<T> {
 	
 	boolean add(MyCollection<T> x);

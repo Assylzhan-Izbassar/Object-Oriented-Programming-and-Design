@@ -68,4 +68,8 @@ public class Course implements Serializable{
 		
 		return courseTitle.equals(c.courseTitle) && tb.equals(c.tb) && instr.equals(c.instr);
 	}
+	public int hashCode()
+	{
+		return this.courseTitle.hashCode() % this.instr.hashCode();
+	}
 }

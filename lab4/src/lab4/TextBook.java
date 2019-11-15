@@ -54,5 +54,10 @@ public class TextBook implements Serializable {
 		
 		return isbn.equals(tb.isbn) && title.equals(tb.title) && authors.equals(tb.authors);
 	}
+	
+	public int hashCode()
+	{
+		return this.isbn.hashCode() % this.title.hashCode();
+	}
 			
 }

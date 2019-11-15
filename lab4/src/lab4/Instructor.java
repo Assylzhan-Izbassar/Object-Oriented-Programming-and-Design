@@ -63,4 +63,9 @@ public class Instructor implements Serializable{
 		return firstName.equals(ins.firstName) && lastName.equals(ins.lastName) 
 				&& department.equals(ins.department) && email.equals(ins.email);
 	}
+	
+	public int hashCode()
+	{
+		return this.firstName.hashCode() * this.lastName.hashCode();
+	}
 }

@@ -1,6 +1,6 @@
 package lab2;
 
-public class Time {
+public class Time implements Comparable<Time>{
 	
 	private int hour; 
 	private int minute; 
@@ -130,14 +130,18 @@ public class Time {
 		}
 	}
 	
-	public static void main(String[] args) {
-		  
-		Time t1 = new Time(16,59,59);
-		System.out.println(t1.toUniversal());
-		System.out.println(t1.toStandart());
-		Time t2 = new Time(22,35,00);
-		t1.add(t2);
-		System.out.println(t1.toUniversal());
-		System.out.println(t1.toStandart());
+	@Override
+	public int compareTo(Time o) {
+		
+		if(this.hour > o.hour) return 1;
+		else if(this.hour < o.hour) return -1;
+		
+		if(this.minute > o.minute)return 1;
+		else if(this.minute < o.minute) return -1;
+		
+		if(this.second > o.second)return 1;
+		else if(this.second < o.second) return -1;
+		
+		return 0;
 	}
 }

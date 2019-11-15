@@ -1,8 +1,11 @@
-package task2;
+package task3;
+
 import java.time.Instant;
 import java.util.Date;
 
-public class Employee extends Person implements Comparable<Employee>{
+import testComp.Factory;
+
+public class Employee extends Person implements Cloneable{
 
 	protected double salary;
 	protected Date hearDate;
@@ -12,7 +15,7 @@ public class Employee extends Person implements Comparable<Employee>{
 		super();
 	}
 	
-	public Employee(String name, String address,double salary, String insuranceNumber)
+	public Employee(String name, String address, double salary, String insuranceNumber)
 	{
 		super(name,address);
 		this.salary = salary;
@@ -37,11 +40,11 @@ public class Employee extends Person implements Comparable<Employee>{
 	public int hashCode(){
 		return 14*31+name.hashCode();
 	}
-
-	@Override
-	public int compareTo(Employee e) {
-		if(this.salary > e.salary) return 1;
-		else if(this.salary < e.salary) return -1;
-		return 0;
+	
+	public Employee clone() throws CloneNotSupportedException
+	{
+		Employee cloned = (Employee)super.clone();
+		cloned.hearDate = (Date)this.hearDate.clone();
+		return cloned;
 	}
 }

@@ -1,3 +1,7 @@
+/entities/
+/implementations/
+/interfaces/
 /models/
-/views/
 /controllers/
+/DBContext.class
+/dal/

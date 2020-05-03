@@ -25,8 +25,8 @@ public class User implements Serializable {
 		this.name = name;
 		this.birthdate = birthdate;
 		this.role = role;
-		Date now = new Date();
-		this.age = now.getYear() - birthdate.getYear();
+		GregorianCalendar now = new GregorianCalendar();
+		this.age = now.getTime().getYear() - birthdate.getYear();
 	}
 	
 	public int getId() {

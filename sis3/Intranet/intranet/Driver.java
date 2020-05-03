@@ -12,7 +12,7 @@ public class Driver {
 
 	public static void main(String[] args) throws IOException {
 		UserRepository userRep = new UserRepository();
-		User user = new User("Assyl", new Date(200,06,29), new Role("admin"));
+		User user = new User("Assyl", new Date(101,05,29), new Role("admin"));
 		userRep.addUser(user);
 		
 		Set<User> users = userRep.getUsers();

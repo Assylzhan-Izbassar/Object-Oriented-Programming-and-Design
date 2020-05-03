@@ -1,7 +1,6 @@
-/entities/
+/intranet/
 /implementations/
-/interfaces/
-/models/
-/controllers/
-/DBContext.class
 /dal/
+/interfaces/
+/views/
+/entities/

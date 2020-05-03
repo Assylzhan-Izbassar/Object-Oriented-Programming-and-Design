@@ -1,8 +1,10 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
-public class User {
+public class User implements Serializable {
 	
 	protected int id;
 	protected String name;
@@ -13,11 +15,18 @@ public class User {
 	{
 		id++;
 	}
-	
+	/**
+	 *@param String name,
+	 *@param Date birthday,
+	 *@param Role role.
+	*/
+	@SuppressWarnings("deprecation")
 	public User(String name, Date birthdate, Role role) {
 		this.name = name;
 		this.birthdate = birthdate;
 		this.role = role;
+		Date now = new Date();
+		this.age = now.getYear() - birthdate.getYear();
 	}
 	
 	public int getId() {
@@ -43,6 +52,11 @@ public class User {
 	}
 	public void setAge(int age) {
 		this.age = age;
+	}
+	
+	public String toString() {
+		return "User's name is " + this.name + ". He/she is " + this.age + " years old." 
+				+ " His/her role is " + role.toString(); 
 	}
 
 }

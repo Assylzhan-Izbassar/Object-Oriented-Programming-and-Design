@@ -1,8 +1,9 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Course {
+public class Course implements Serializable  {
 	
 	public int id;
 	public String name;

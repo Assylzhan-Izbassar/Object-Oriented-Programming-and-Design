@@ -58,8 +58,12 @@ public class UserRepository implements IUserRepository, Serializable{
 		oos.close();
 	}
 	@Override
-	public User getUserById(int id) {
-		Set<User> users = dbContext.users;
+	public User getUserById(int id) throws IOException {
+		
+		Set<User> users = this.getUsers();
+		
+		if((id-1) > users.size())
+			return null;
 		
 		for (User user : users) {
 			if(user.getId() == id) {
@@ -78,7 +82,9 @@ public class UserRepository implements IUserRepository, Serializable{
 		return false;
 	}
 	@Override
-	public boolean removeUser(User user) throws IOException {
+	public boolean removeUser(int id) throws IOException {
+		User user = this.getUserById(id);
+		
 		if(user != null) {
 			dbContext.users.remove(user);
 			this.save();

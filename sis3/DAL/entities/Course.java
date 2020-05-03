@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Course implements Serializable  {
 	
+	private static final long serialVersionUID = -3191977710217367973L;
 	public int id;
 	public String name;
 	public int credit;

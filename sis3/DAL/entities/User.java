@@ -4,16 +4,18 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class User implements Serializable {
+public class User implements Serializable, Comparable<User> {
 	
+	private static final long serialVersionUID = 1L;
 	protected int id;
 	protected String name;
 	protected Date birthdate;
 	protected int age;
 	protected Role role;
+	protected static int count = -1;
 	
 	{
-		id++;
+		++count;
 	}
 	/**
 	 *@param String name,
@@ -27,6 +29,7 @@ public class User implements Serializable {
 		this.role = role;
 		GregorianCalendar now = new GregorianCalendar();
 		this.age = now.getTime().getYear() - birthdate.getYear();
+		this.id = count;
 	}
 	
 	public int getId() {
@@ -55,8 +58,26 @@ public class User implements Serializable {
 	}
 	
 	public String toString() {
-		return "User's name is " + this.name + ". He/she is " + this.age + " years old." 
+		return "User's name is " + this.name + ", with id: " + this.id + ". He/she is " + this.age + " years old." 
 				+ " His/her role is " + role.toString(); 
+	}
+	public int compareTo(User user) {
+		return this.getName().compareTo(user.getName());
+	}
+	
+	public int hashCode() {
+		return (this.getName().hashCode() * this.getAge()) % this.role.hashCode();
+	}
+	
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null || !(o instanceof User)) return false;
+		
+		User user = (User) o;
+		
+		return this.getName().equals(user.getName()) &&
+				this.getAge() == user.getAge() &&
+				this.getBirthdate().equals(user.getBirthdate());
 	}
 
 }

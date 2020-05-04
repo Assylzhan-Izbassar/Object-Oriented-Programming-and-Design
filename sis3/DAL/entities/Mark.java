@@ -9,6 +9,7 @@ public class Mark implements Serializable{
 	private int id;
 	private double mark;
 	private GregorianCalendar markedDate;
+	private String letterMark;
 	private static int count = -1;
 	
 	{
@@ -48,5 +49,13 @@ public class Mark implements Serializable{
 		
 		Mark mark = (Mark)o;
 		return this.getMark() == mark.getMark() && this.getMarkedDate().equals(mark.getMarkedDate());
+	}
+
+	public String getLetterMark() {
+		return letterMark;
+	}
+
+	public void setLetterMark(String letterMark) {
+		this.letterMark = letterMark;
 	}
 }

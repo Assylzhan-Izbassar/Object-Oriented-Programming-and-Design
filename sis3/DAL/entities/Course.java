@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class Course implements Serializable  {
@@ -9,6 +10,8 @@ public class Course implements Serializable  {
 	public int id;
 	public String name;
 	public int credit;
+	public GregorianCalendar startingDate;
+	public GregorianCalendar endingDate;
 	public List<Student> students;
 	public Teacher teacher;
 	

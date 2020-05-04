@@ -66,7 +66,8 @@ public class User implements Serializable, Comparable<User> {
 	}
 	
 	public int hashCode() {
-		return (this.getName().hashCode() * this.getAge()) % this.role.hashCode();
+		//return (this.getName().hashCode() * this.getAge()) % this.role.hashCode();
+		return this.getId();
 	}
 	
 	public boolean equals(Object o) {

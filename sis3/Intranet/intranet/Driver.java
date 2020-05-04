@@ -13,6 +13,7 @@ import views.UserView;
 
 public class Driver {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException {
 		Index.mainPage(true);
 		
@@ -24,7 +25,7 @@ public class Driver {
 		userRep.addUser(user2);
 		userRep.addUser(student);
 		
-		System.out.println(userRep.getUserById(2));
+		//System.out.println(userRep.getUserById(2));
 		
 		Set<User> users = userRep.getUsers();
 		

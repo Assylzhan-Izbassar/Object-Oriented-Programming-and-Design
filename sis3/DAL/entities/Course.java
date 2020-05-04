@@ -27,6 +27,9 @@ public class Course implements Serializable  {
 	public int getId() {
 		return this.id;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getName() {
 		return this.name;
@@ -57,6 +60,13 @@ public class Course implements Serializable  {
 		for(Student student : students) {
 			this.students.add(student);
 		}
+	}
+	public void addStudent(Student student) {
+		this.students.add(student);
+	}
+	
+	public String toString() {
+		return "Course is: " + this.name + " with " + this.credit + " credit.";
 	}
 
 }

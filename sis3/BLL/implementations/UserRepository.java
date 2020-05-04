@@ -1,6 +1,5 @@
 package implementations;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -21,7 +20,7 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 	public Set<User> getUsers() {
 
 		@SuppressWarnings("unchecked")
-		Set<User> users = (Set<User>)extractObject(this.dbPath);
+		Set<User> users = (Set<User>)super.extractObject(this.dbPath);
 		return users;
 	}
 	
@@ -32,29 +31,27 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 		this.dbContext = dbContext;
 	}
 	
-	public void save() throws IOException {
+	public boolean save(){
 		Set<User> users = dbContext.users;
-		if(super.saveObject(users, this.dbPath)) {
-			super.saveObject(users, this.dbPath);
-		}
+		return super.saveObject(users, this.dbPath);
 	}
 	@Override
 	public User getUserById(int id) {
 		
 		Set<User> users = this.getUsers();
 		
-		if((id-1) > users.size())
-			return null;
-		
-		for (User user : users) {
-			if(user.getId() == id) {
-				return user;
+		if((id-1) < users.size()){
+			for (User user : users) {
+				if(user.getId() == id) {
+					return user;
+				}
 			}
 		}
+		
 		return null;
 	}
 	@Override
-	public boolean addUser(User newUser) throws IOException {
+	public boolean insertUser(User newUser){
 		if(newUser != null) {
 			dbContext.users.add(newUser);
 			this.save();
@@ -63,7 +60,7 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 		return false;
 	}
 	@Override
-	public boolean removeUser(int id) throws IOException{
+	public boolean removeUser(int id){
 		User user = this.getUserById(id);
 		
 		if(user != null) {
@@ -72,6 +69,12 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public boolean updateUser(int id, User newUser) {
+		this.removeUser(id);
+		newUser.setId(id);
+		return this.insertUser(newUser);
 	}
 
 }

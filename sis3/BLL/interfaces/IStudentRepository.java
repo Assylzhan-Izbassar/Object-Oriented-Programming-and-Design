@@ -6,6 +6,7 @@ import entities.Course;
 import entities.Mark;
 
 public interface IStudentRepository {
+	
 	boolean courseRegister(Course course);
 	HashMap<Course, Mark> getTranscript();
 }

@@ -1,13 +1,11 @@
 package implementations;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 import entities.User;
@@ -16,6 +14,7 @@ import interfaces.IUserRepository;
 
 public class UserRepository implements IUserRepository, Serializable{
 	
+	private static final long serialVersionUID = -1309997129220173168L;
 	private DBContext dbContext;
 	private FileOutputStream fos;
 	private ObjectOutputStream oos;
@@ -27,6 +26,7 @@ public class UserRepository implements IUserRepository, Serializable{
 		this.dbContext = new DBContext();
 	}
 	@Override
+	@SuppressWarnings("unchecked")
 	public Set<User> getUsers() throws IOException {
 		fis = new FileInputStream(this.dbPath);
 		ois = new ObjectInputStream(fis);

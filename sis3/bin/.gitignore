@@ -1,6 +1,7 @@
-/dal/
-/interfaces/
-/implementations/
 /entities/
-/intranet/
+/controllers/
+/models/
+/implementations/
 /views/
+/services/
+/intranet/

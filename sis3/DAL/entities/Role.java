@@ -6,7 +6,7 @@ import java.util.List;
 public class Role implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
-	public String roleName;
+	private String roleName;
 	public List<User> users;
 	
 	public Role(String roleName) {
@@ -15,5 +15,12 @@ public class Role implements Serializable  {
 	
 	public String toString() {
 		return this.roleName;
+	}
+	
+	public String getRoleName() {
+		return this.roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 }

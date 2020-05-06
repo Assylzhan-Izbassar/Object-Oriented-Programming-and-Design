@@ -27,9 +27,6 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 	public DBContext getDbContext() {
 		return dbContext;
 	}
-	public void setDbContext(DBContext dbContext) {
-		this.dbContext = dbContext;
-	}
 	
 	public boolean save(){
 		Set<User> users = dbContext.users;
@@ -47,7 +44,6 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 				}
 			}
 		}
-		
 		return null;
 	}
 	@Override

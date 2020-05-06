@@ -60,16 +60,20 @@ public class User implements Serializable, Comparable<User> {
 		this.age = age;
 	}
 	
+	public String getRole() {
+		return this.role.getRoleName();
+	}
+	
 	public String toString() {
 		return "User's name is " + this.name + ", with id: " + this.id + ". He/she is " + this.age + " years old." 
 				+ " His/her role is " + role.toString(); 
 	}
+	
 	public int compareTo(User user) {
 		return this.getName().compareTo(user.getName());
 	}
 	
 	public int hashCode() {
-		//return (this.getName().hashCode() * this.getAge()) % this.role.hashCode();
 		return this.getId();
 	}
 	

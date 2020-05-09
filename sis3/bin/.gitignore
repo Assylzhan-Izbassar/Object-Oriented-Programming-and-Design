@@ -1,7 +1,5 @@
-/entities/
-/controllers/
-/models/
 /implementations/
-/views/
-/services/
 /intranet/
+/interfaces/
+/views/
+/controllers/

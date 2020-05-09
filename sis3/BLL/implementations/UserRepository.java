@@ -15,13 +15,14 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 	
 	public UserRepository(){
 		this.dbContext = new DBContext();
+		if(getUsers() != null) {
+			this.dbContext.users = getUsers();
+		}
 	}
 	@Override
+	@SuppressWarnings("unchecked")
 	public Set<User> getUsers() {
-
-		@SuppressWarnings("unchecked")
-		Set<User> users = (Set<User>)super.extractObject(this.dbPath);
-		return users;
+		return (Set<User>)super.extractObject(this.dbPath);
 	}
 	
 	public DBContext getDbContext() {
@@ -29,8 +30,7 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 	}
 	
 	public boolean save(){
-		Set<User> users = dbContext.users;
-		return super.saveObject(users, this.dbPath);
+		return super.saveObject(dbContext.users, this.dbPath);
 	}
 	@Override
 	public User getUserById(int id) {

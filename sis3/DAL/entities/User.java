@@ -32,6 +32,7 @@ public class User implements Serializable, Comparable<User> {
 		this.id = count;
 	}
 	
+	
 	public int getId() {
 		return this.id;
 	}
@@ -74,7 +75,7 @@ public class User implements Serializable, Comparable<User> {
 	}
 	
 	public int hashCode() {
-		return this.getId();
+		return this.getId() * this.getName().hashCode();
 	}
 	
 	public boolean equals(Object o) {

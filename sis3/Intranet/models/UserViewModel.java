@@ -1,12 +1,14 @@
 package models;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
 import entities.Role;
 
-public class UserViewModel {
+public class UserViewModel implements Serializable {
 	
+	private static final long serialVersionUID = 4201043825678843165L;
 	protected String name;
 	protected Date birthdate;
 	protected int age;
@@ -52,5 +54,19 @@ public class UserViewModel {
 	public String toString() {
 		return "User's name is " + this.name + ". He/she is " + this.age + " years old." 
 				+ " His/her role is " + role.toString(); 
+	}
+	public boolean equals(Object o) {
+		if(o == this) return true;
+		if(o == null || !(o instanceof UserViewModel)) return false;
+		
+		UserViewModel userView = (UserViewModel) o;
+		
+		return this.name.equals(userView.getName()) 
+				&& this.birthdate.equals(userView.getBirthdate())
+				&& this.role.getRoleName().equals(userView.getRole())
+				&& this.age == userView.getAge();
+	}
+	public int hashCode() {
+		return this.getName().hashCode() % this.getAge();
 	}
 }

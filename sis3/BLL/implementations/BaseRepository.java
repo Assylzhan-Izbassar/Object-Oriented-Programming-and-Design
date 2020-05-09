@@ -1,5 +1,6 @@
 package implementations;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -18,16 +19,18 @@ public class BaseRepository implements IBaseRepository, Serializable{
 	private ObjectInputStream ois;
 	
 	public Object extractObject(String path){
-		if(path != null) {
+		if(path != null && new File(path).exists() && new File(path).length() != 0) {
 			try {
 				fis = new FileInputStream(path);
 				ois = new ObjectInputStream(fis);
-				Object o;
 				try {
-					o = ois.readObject();
-					return o;
+					return ois.readObject();
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
+				}
+				finally {
+					fis.close();
+					ois.close();
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -40,7 +43,7 @@ public class BaseRepository implements IBaseRepository, Serializable{
 	public boolean saveObject(Object o, String path) {
 		if(path != null) {
 			try {
-				fos =  new FileOutputStream(path);
+				fos = new FileOutputStream(path);
 				oos = new ObjectOutputStream(fos);
 				oos.writeObject(o);
 				oos.flush();

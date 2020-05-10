@@ -24,12 +24,12 @@ public class User implements Serializable, Comparable<User> {
 	*/
 	@SuppressWarnings("deprecation")
 	public User(String name, Date birthdate, Role role) {
+		this.id = count;
 		this.name = name;
 		this.birthdate = birthdate;
 		this.role = role;
 		GregorianCalendar now = new GregorianCalendar();
 		this.age = now.getTime().getYear() - birthdate.getYear();
-		this.id = count;
 	}
 	
 	

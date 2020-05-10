@@ -49,6 +49,12 @@ public class UserRepository extends BaseRepository implements IUserRepository, S
 	@Override
 	public boolean insertUser(User newUser){
 		if(newUser != null) {
+			if(this.getUsers() == null) {
+				newUser.setId(1);
+			}
+			else {
+				newUser.setId(this.getUsers().size()+1);
+			}
 			dbContext.users.add(newUser);
 			this.save();
 			return true;

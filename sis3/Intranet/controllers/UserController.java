@@ -16,7 +16,7 @@ public class UserController{
 	//GET
 	public void index() {
 		UserView.showUsers(UserServices
-				.userSetToUserViewSet(this.repository.getUsers()));
+				.userSetToUserEditViewSet(this.repository.getUsers()));
 	}
 	//GET
 	public void details(int id) {

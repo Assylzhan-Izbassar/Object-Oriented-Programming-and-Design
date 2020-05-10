@@ -1,5 +1,6 @@
-/implementations/
-/intranet/
-/interfaces/
-/views/
 /controllers/
+/views/
+/intranet/
+/services/
+/entities/
+/implementations/

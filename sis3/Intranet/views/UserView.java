@@ -10,6 +10,7 @@ import java.util.Set;
 
 import controllers.UserController;
 import entities.Role;
+import models.UserEditModel;
 import models.UserViewModel;
 
 public class UserView {
@@ -17,20 +18,20 @@ public class UserView {
 	private static UserController controller = new UserController();
 	
 	//Users page
-	public static void showUsers(Set<UserViewModel> users) {
+	public static void showUsers(Set<UserEditModel> users) {
 		if(users == null){
 			System.out.println("No users yet.");
 			return;
 		}
-		for(UserViewModel User : users) {
-			System.out.println(User.toString());
+		for(UserEditModel User : users) {
+			System.out.println(User.getId() + ") " + User.toString());
 		}
 	}
 	//User details page
 	public static void details(UserViewModel user) {
-		System.out.println("User's name:" + user.getName() + "\n" 
-				+ "birthdate: " + user.getBirthdate() + "/n"
-				+ "age: " + user.getAge() + "/n"
+		System.out.println("User's name: " + user.getName() + "\n" 
+				+ "birthdate: " + user.getBirthdate() + "\n"
+				+ "age: " + user.getAge() + "\n"
 				+ "role: " + user.getRole());
 	}
 	//Insert page

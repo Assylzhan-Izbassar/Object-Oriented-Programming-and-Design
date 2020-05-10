@@ -25,6 +25,21 @@ public class UserServices {
 		return userView;
 	}
 	/**
+	 * convert set of users into set to userViews
+	 * @param Set<User> users*/
+	public static Set<UserEditModel> userSetToUserEditViewSet(Set<User> users){
+		
+		if(users == null)
+			return null;
+		
+		Set<UserEditModel> userView = new HashSet<UserEditModel>();
+		
+		for(User user : users) {
+			userView.add(UserServices.userToUserEditView(user));
+		}
+		return userView;
+	}
+	/**
 	 * convert user to userView
 	 * @param User user*/
 	public static UserViewModel userToUserView(User user) {
@@ -38,11 +53,12 @@ public class UserServices {
 	 * convert userView to user
 	 * @param UserView userView*/
 	public static User userViewToUser(UserViewModel userView) {
-		return new User(
+		User user = new User(
 				userView.getName(),
 				userView.getBirthdate(),
 				new Role(userView.getRole())
 				);
+		return user;
 	}
 	/**
 	 * convert user to userEditView

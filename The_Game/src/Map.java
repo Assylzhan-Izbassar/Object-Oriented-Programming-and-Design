@@ -6,7 +6,11 @@ public class Map {
 	
 	public Map(Scanner scan) throws InvalidMapException {
 		
-		int n = scan.nextInt();
+		int n = scan.nextInt(); // размер массива
+		
+		if (n <= 0) {
+			throw new InvalidMapException("Map size can not be zero");
+		}
 		
 		int rows = n, cols = n;
 
@@ -19,7 +23,7 @@ public class Map {
 		    	String val = scan.next();
 		    	
 		    	if (val.equals("0") || val.equals("1") || val.equals("P")){
-		    		inputArray[i][j] = scan.next().charAt(0);
+		    		inputArray[i][j] = val.charAt(0);
 		    	}
 		    	else {
 		    		throw new InvalidMapException("Not enough map elements");
